@@ -31,13 +31,18 @@ export default function PrivacyPage() {
         text only after matching the review to an order, and only because you agreed to it on the form. Ask us any time to remove
         your review.
       </p>
-      <h2>Analytics (only if you click Allow)</h2>
+      <h2>Visit counting (Vercel Web Analytics)</h2>
       <p>
-        Until you click <strong>Allow</strong> on the cookie banner, no analytics are sent. If you allow them, we use Google
-        Analytics (with Consent Mode) and Vercel Web Analytics to count page views and a short list of events: which buttons
-        were clicked, which color was picked, and whether a checkout was started or completed (color and quantity only). We
-        never send names, emails, addresses or payment details to analytics. Page addresses sent to Vercel are trimmed to the
-        path plus plain <code>utm_*</code> campaign tags.
+        We count page views with Vercel Web Analytics. It uses no cookies, doesn&rsquo;t identify you, and isn&rsquo;t used for
+        advertising. It records the page, referrer, country, device and browser type. Page addresses are trimmed to the path plus
+        plain <code>utm_*</code> campaign tags before they&rsquo;re sent, so nothing else in a link (like an order ID) is recorded.
+      </p>
+      <h2>Google Analytics (only if you click Allow)</h2>
+      <p>
+        Google Analytics (with Consent Mode) stays off until you click <strong>Allow</strong> on the banner. If you allow it,
+        Google sets cookies and we send it a short list of events: which buttons were clicked, which color was picked, and
+        whether a checkout was started or completed (color and quantity only). We never send names, emails, addresses or
+        payment details.
       </p>
       <h2>What&rsquo;s stored on your device</h2>
       <p>

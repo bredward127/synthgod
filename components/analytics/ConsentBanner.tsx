@@ -48,7 +48,8 @@ export default function ConsentBanner() {
     setDecided(true);
   }
 
-  if (decided) return null;
+  // Only Google needs consent; without a Google tag there is nothing to ask about.
+  if (decided || !process.env.NEXT_PUBLIC_GOOGLE_TAG_ID?.trim()) return null;
 
   return (
     <div
@@ -58,11 +59,12 @@ export default function ConsentBanner() {
       className="glass fixed inset-x-3 bottom-3 z-[65] animate-fade-up rounded-3xl bg-brand-surface/80 p-5 shadow-2xl sm:inset-x-auto sm:left-5 sm:bottom-5 sm:max-w-md"
     >
       <h2 id="consent-title" className="font-display text-[15px] font-semibold text-brand-ink">
-        Measurement is off unless you turn it on
+        Allow Google Analytics?
       </h2>
       <p className="mt-1.5 text-[13px] leading-relaxed text-brand-muted">
-        We&rsquo;d like to use Google Analytics and Vercel Analytics to see which pages are useful. Google sets cookies and
-        receives your IP address and page views. Nothing is measured until you choose. Details are on the{' '}
+        We count visits with Vercel Analytics, which uses no cookies and collects no personal data. We&rsquo;d also like to
+        use Google Analytics, which sets cookies and receives your IP address and page views. Google stays off unless you
+        allow it. Details are on the{' '}
         <Link href="/privacy" className="text-brand-ink underline underline-offset-4">
           privacy page
         </Link>

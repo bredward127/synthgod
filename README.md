@@ -5,7 +5,7 @@ A one-product store for the M-VAVE FM-1 handheld FM synthesizer. Next.js 14 (App
 - **Home `/`:** animated hero with a colorway switcher, a feature grid, a playable FM synth in the browser (Web Audio), a color studio, a spec sheet, reviews, guarantees, FAQ and a sticky buy bar.
 - **Checkout `/checkout`:** choose color and quantity, then pay with PayPal Smart Buttons (PayPal balance or card). Orders are created and captured **on the server**, and the price always comes from `data/store.ts`, so a buyer can't change it.
 - **Pages:** `/checkout/success`, `/shipping`, `/returns`, `/terms`, `/privacy`, `/contact`, a sitemap and robots.txt.
-- **Analytics:** consent-gated Google and Vercel analytics. Nothing is sent until the visitor clicks Allow.
+- **Analytics:** Vercel Web Analytics counts every visit (cookieless, URLs scrubbed to path + UTM tags). Google Analytics is optional and stays off until the visitor clicks Allow; the banner only appears when `NEXT_PUBLIC_GOOGLE_TAG_ID` is set.
 
 ## Before you go live
 
@@ -28,7 +28,7 @@ Shipping addresses come from PayPal. You see every order in your PayPal account,
 1. Push this repo to GitHub, then on vercel.com: **Add New → Project → import the repo**. The defaults work.
 2. Under **Settings → Environment Variables**, add the values from `.env.example`.
 3. Deploy. Add your domain under **Settings → Domains** and set `NEXT_PUBLIC_SITE_URL` to it.
-4. Optional: **Analytics → Enable** to turn on Vercel Web Analytics.
+4. In the project's **Analytics** tab, click **Enable** if it isn't on yet. Visits show up within about 30 seconds of the first page view. Custom events need a Vercel Pro team, so funnel events go to Google.
 
 ## Develop
 

@@ -1,17 +1,15 @@
 'use client';
 
 import { Analytics, type BeforeSendEvent } from '@vercel/analytics/next';
-import { readConsent, hasAnalyticsConsent } from '@/lib/analytics/consent';
 import { scrubUrl } from '@/lib/analytics/vercel';
 
 /**
- * Vercel Web Analytics, held to the same rule as Google: nothing is sent
- * until the visitor chooses Allow. Consent is checked on every event, so the
- * choice applies from the next page view onward without a reload. URLs are
- * reduced to the path plus UTM tags before sending.
+ * Vercel Web Analytics: cookieless, no personal data, so it counts every
+ * visit (Google, which sets cookies, stays behind the consent banner).
+ * URLs are reduced to the path plus UTM tags before sending, so query
+ * strings like a PayPal order ID on /checkout/success never leave the site.
  */
 function beforeSend(event: BeforeSendEvent): BeforeSendEvent | null {
-  if (!hasAnalyticsConsent(readConsent())) return null;
   return { ...event, url: scrubUrl(event.url) };
 }
 
