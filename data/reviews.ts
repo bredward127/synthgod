@@ -81,7 +81,6 @@ export const reviews: Review[] = [
     name: "U***r",
     rating: 5,
     text: "Been having fun with this. My friend and i ordered it at the same time and they arrived together! On time and perfect conditions :)",
-    color: "Purple",
     date: '2026-08-16',
     country: 'US',
     source: 'aliexpress',

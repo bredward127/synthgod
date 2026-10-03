@@ -8,7 +8,7 @@ const flag = (cc?: string) => (cc && /^[A-Z]{2}$/.test(cc) ? String.fromCodePoin
 
 function ReviewCard({ r, delay }: { r: Review; delay: number }) {
   return (
-    <Reveal delay={delay} className="card spotlight mb-4 break-inside-avoid p-6 sm:p-7">
+    <Reveal delay={delay} className="card spotlight w-[86%] shrink-0 snap-center p-6 sm:p-7 md:mb-4 md:w-auto md:break-inside-avoid">
       <div className="flex items-center justify-between gap-3">
         <Stars rating={r.rating} size={14} />
         <Quote className="h-5 w-5 text-brand-accent/60" />
@@ -46,7 +46,7 @@ export default function Reviews() {
   const external = reviews.filter((r) => r.source === 'aliexpress');
   const ownAvg = store.length ? store.reduce((s, r) => s + r.rating, 0) / store.length : null;
   return (
-    <div className="grid gap-4 lg:grid-cols-[340px_1fr]">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-[340px_minmax(0,1fr)]">
       <div className="lg:sticky lg:top-24 lg:self-start">
         <Reveal className="card flex flex-col p-7 sm:p-8">
           {ownAvg !== null ? (
@@ -75,9 +75,9 @@ export default function Reviews() {
         </Reveal>
       </div>
 
-      <div>
+      <div className="min-w-0">
         {store.length ? (
-          <div className="columns-1 gap-4 md:columns-2">
+          <div className="rail -mx-5 flex items-start snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:block md:columns-2 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
             {store.map((r, i) => (
               <ReviewCard key={`${r.name}-${r.date}-${i}`} r={r} delay={(i % 4) * 70} />
             ))}
@@ -87,8 +87,9 @@ export default function Reviews() {
           <>
             <Reveal as="p" className={`eyebrow mb-4 ${store.length ? 'mt-6' : ''}`}>
               {store.length ? 'Also reviewed on AliExpress' : 'What FM-1 owners wrote on AliExpress'}
+              <span className="ml-2 text-brand-faint md:hidden">· swipe →</span>
             </Reveal>
-            <div className="columns-1 gap-4 md:columns-2">
+            <div className="rail -mx-5 flex items-start snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 md:mx-0 md:block md:columns-2 md:gap-4 md:overflow-visible md:px-0 md:pb-0">
               {external.map((r, i) => (
                 <ReviewCard key={`${r.name}-${r.date}-${i}`} r={r} delay={(i % 4) * 70} />
               ))}

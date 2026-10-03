@@ -2,6 +2,7 @@ import { BatteryCharging, Monitor, Music2, SlidersHorizontal, Sparkles, Volume2 
 import Reveal from './Reveal';
 import SpotlightGroup from './SpotlightGroup';
 import SectionTitle from './SectionTitle';
+import CountUp from './motion/CountUp';
 
 const FX = ['Filter', 'Reverb', 'Delay', 'Distortion', 'Chorus', 'Phaser'];
 /** Pattern lit by the running step light (true = note). */
@@ -35,7 +36,7 @@ export default function Bento() {
           <Card className="flex min-h-[420px] flex-col justify-between lg:col-span-4 lg:row-span-2">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute inset-0 bg-[url('/images/fm1-dark.webp')] bg-[length:170%] bg-[position:6%_100%] bg-no-repeat opacity-80 [mask-image:linear-gradient(180deg,transparent_38%,black_80%)]"
+              className="pointer-events-none absolute inset-0 bg-[url('/images/fm1-dark-800.webp')] sm:bg-[url('/images/fm1-dark.webp')] bg-[length:170%] bg-[position:6%_100%] bg-no-repeat opacity-80 [mask-image:linear-gradient(180deg,transparent_38%,black_80%)]"
             />
             <div className="relative max-w-sm">
               <p className="eyebrow">OP1 — OP6</p>
@@ -52,7 +53,7 @@ export default function Bento() {
           <Card delay={80} className="lg:col-span-2">
             <p className="eyebrow">Presets</p>
             <p className="mt-3 bg-gradient-to-b from-white to-white/30 bg-clip-text font-display text-[88px] font-semibold leading-none tracking-tightest text-transparent">
-              128
+              <CountUp to={128} />
             </p>
             <p className="mt-3 text-[15px] leading-relaxed text-brand-muted">Electric pianos, bells, basses, pads. Turn the PRESETS knob and play.</p>
           </Card>

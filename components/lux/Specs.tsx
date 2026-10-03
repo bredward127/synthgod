@@ -11,7 +11,7 @@ const SPECS: Array<[string, string]> = [
   ['Keys', 'Two-row silicone keybed with octave up/down'],
   ['Speaker', 'Built-in'],
   ['Power', 'Rechargeable battery, included'],
-  ['Colors', 'Orange, Green, Blue, Gray, Dark, Purple'],
+  ['Colors', 'Orange, Green, Blue, Gray, Dark'],
 ];
 
 /** Spec sheet: only what the listing and the printed panel confirm. */

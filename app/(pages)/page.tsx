@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Hero from '@/components/lux/Hero';
 import Marquee from '@/components/lux/Marquee';
 import Bento from '@/components/lux/Bento';
+import Tour from '@/components/lux/Tour';
 import SectionTitle from '@/components/lux/SectionTitle';
 import FmPlayground from '@/components/lux/FmPlayground';
 import ColorStudio from '@/components/lux/ColorStudio';
@@ -72,6 +73,16 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
       <Hero />
       <Marquee />
+
+      <section id="tour" className="scroll-mt-24 px-5 pt-20 sm:pt-28">
+        <div className="mx-auto max-w-6xl">
+          <SectionTitle eyebrow="Panel tour" title="Every control," accent="exactly where you need it." />
+          <div className="mt-8 sm:mt-14">
+            <Tour />
+          </div>
+        </div>
+      </section>
+
       <Bento />
 
       <section id="sound" className="scroll-mt-24 px-5 py-20 sm:py-28">
@@ -90,7 +101,7 @@ export default function Home() {
 
       <section id="colors" className="scroll-mt-24 px-5 py-20 sm:py-28">
         <div className="mx-auto max-w-6xl">
-          <SectionTitle eyebrow="Six finishes" title="Pick the one that" accent="sounds like you." />
+          <SectionTitle eyebrow="Five finishes" title="Pick the one that" accent="sounds like you." />
           <Reveal delay={120} className="mt-14">
             <ColorStudio />
           </Reveal>

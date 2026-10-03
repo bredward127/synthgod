@@ -7,15 +7,15 @@
  * returns must be terms you will actually honor.
  */
 
-export type ColorId = 'orange' | 'green' | 'blue' | 'gray' | 'dark' | 'purple';
+export type ColorId = 'orange' | 'green' | 'blue' | 'gray' | 'dark';
 
 export type ColorOption = {
   id: ColorId;
   name: string;
   /** Short finish description. */
   body: string;
-  /** Transparent cutout in /public/images. Omit when you have no photo. */
-  image?: string;
+  /** Transparent cutout in /public/images (an -800 variant is used on phones). */
+  image: string;
   /** Swatch [body, keys] and glow color used behind the product. */
   swatch: [string, string];
   glow: string;
@@ -55,7 +55,6 @@ export const colors: ColorOption[] = [
   { id: 'blue', name: 'Blue', body: 'Cream body, slate-blue keys', image: '/images/fm1-blue.webp', swatch: ['#F1EEE6', '#4E6E95'], glow: '96 140 210', available: true },
   { id: 'gray', name: 'Gray', body: 'Cream body, charcoal keys', image: '/images/fm1-gray.webp', swatch: ['#E9E3DA', '#45484C'], glow: '210 200 186', available: true },
   { id: 'dark', name: 'Dark', body: 'Charcoal body, black keys', image: '/images/fm1-dark.webp', swatch: ['#3A3A3D', '#141416'], glow: '150 150 160', available: true },
-  { id: 'purple', name: 'Purple', body: 'Purple finish', swatch: ['#8B6CD9', '#5B3FB4'], glow: '139 108 217', available: true },
 ];
 
 export const defaultColor: ColorId = 'orange';

@@ -1,4 +1,5 @@
 import Reveal from './Reveal';
+import SplitWords from './SplitWords';
 
 /** Eyebrow + headline with an italic serif accent + optional body. */
 export default function SectionTitle({
@@ -24,8 +25,9 @@ export default function SectionTitle({
           <span className={`h-px w-8 bg-gradient-to-l from-transparent to-brand-accent ${center ? '' : 'hidden'}`} />
         </Reveal>
       ) : null}
-      <Reveal as="h2" delay={80} className="mt-5 font-display text-[clamp(2.2rem,5vw,3.75rem)] font-semibold leading-[1.02] tracking-tightest text-brand-ink">
-        {title} {accent ? <span className="font-serif font-normal italic tracking-normal text-brand-gold">{accent}</span> : null}
+      <Reveal as="h2" delay={80} className="split-host mt-4 font-display text-[clamp(2.1rem,8.5vw,3.75rem)] font-semibold leading-[1.02] tracking-tightest text-brand-ink sm:mt-5">
+        <SplitWords text={title} />{' '}
+        {accent ? <SplitWords text={accent} offset={title.split(' ').length} className="font-serif font-normal italic tracking-normal text-brand-gold" /> : null}
       </Reveal>
       {body ? (
         <Reveal as="p" delay={160} className={`mt-5 text-[17px] leading-relaxed text-brand-muted ${center ? 'mx-auto max-w-xl' : ''}`}>

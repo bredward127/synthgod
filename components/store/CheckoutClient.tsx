@@ -7,6 +7,7 @@ import { PayPalButtons, PayPalScriptProvider, usePayPalScriptReducer } from '@pa
 import { CircleAlert, Lock, Minus, Plus, RotateCcw, ShieldCheck, Truck } from 'lucide-react';
 import { colors, formatMoney, store, type ColorId } from '@/data/store';
 import { quote } from '@/lib/store/pricing';
+import ProductImage from '@/components/lux/ProductImage';
 import { track } from '@/lib/analytics/track';
 
 function Spinner() {
@@ -88,14 +89,13 @@ export default function CheckoutClient({ initialColor, paypalClientId }: { initi
           <div className="card animate-fade-up p-6 sm:p-8">
             <div className="relative grid aspect-[16/10] place-items-center overflow-hidden rounded-3xl bg-black/30">
               <div aria-hidden="true" className="absolute inset-0 transition-[background] duration-700" style={{ background: `radial-gradient(60% 60% at 50% 55%, rgb(${selected.glow} / 0.35), transparent 70%)` }} />
-              {selected.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img key={selected.id} src={selected.image} alt={`M-VAVE FM-1 in ${selected.name}`} className="relative w-[88%] animate-scale-in drop-shadow-[0_30px_40px_rgb(0_0_0/0.7)]" />
-              ) : (
-                <div className="relative grid h-[70%] w-[80%] animate-scale-in place-items-center rounded-3xl" style={{ background: `linear-gradient(135deg, ${selected.swatch[0]}, ${selected.swatch[1]})` }}>
-                  <span className="rounded-full bg-black/35 px-4 py-2 text-sm text-white backdrop-blur">{selected.name}: photo coming soon</span>
-                </div>
-              )}
+              <ProductImage
+                key={selected.id}
+                image={selected.image}
+                priority
+                alt={`M-VAVE FM-1 in ${selected.name}`}
+                className="relative w-[88%] animate-scale-in drop-shadow-[0_30px_40px_rgb(0_0_0/0.7)]"
+              />
             </div>
 
             <fieldset className="mt-8">
@@ -103,7 +103,7 @@ export default function CheckoutClient({ initialColor, paypalClientId }: { initi
                 <span className="eyebrow">Color</span>
                 <span className="text-sm text-brand-ink">{selected.name}</span>
               </legend>
-              <div className="mt-4 grid grid-cols-3 gap-2.5 sm:grid-cols-6">
+              <div className="mt-4 grid grid-cols-5 gap-2 sm:gap-2.5">
                 {colors.map((c) => (
                   <button
                     key={c.id}
@@ -114,12 +114,12 @@ export default function CheckoutClient({ initialColor, paypalClientId }: { initi
                       setColor(c.id);
                       track('select_color', { color: c.id, slot: 'checkout' });
                     }}
-                    className={`group flex flex-col items-center gap-2 rounded-2xl border p-3 transition duration-300 ease-lux disabled:cursor-not-allowed disabled:opacity-40 ${
+                    className={`group flex flex-col items-center gap-1.5 rounded-2xl border px-1 py-3 sm:gap-2 sm:p-3 transition duration-300 ease-lux disabled:cursor-not-allowed disabled:opacity-40 ${
                       c.id === color ? 'border-brand-accent/70 bg-brand-accent/[0.08]' : 'border-white/10 bg-white/[0.02] hover:border-white/25'
                     }`}
                   >
                     <span className="h-8 w-8 rounded-full ring-1 ring-white/20" style={{ background: `linear-gradient(135deg, ${c.swatch[0]} 50%, ${c.swatch[1]} 50%)` }} />
-                    <span className="text-xs text-brand-ink">{c.name}</span>
+                    <span className="text-[11px] text-brand-ink sm:text-xs">{c.name}</span>
                     {!c.available ? <span className="text-[10px] uppercase tracking-wider text-brand-faint">Sold out</span> : null}
                   </button>
                 ))}

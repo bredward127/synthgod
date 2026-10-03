@@ -1,6 +1,7 @@
 import Header from '@/components/lux/Header';
 import Footer from '@/components/lux/Footer';
 import RevealObserver from '@/components/lux/RevealObserver';
+import ScrollProgress from '@/components/lux/motion/ScrollProgress';
 import { store } from '@/data/store';
 
 /** Store chrome: announcement strip, floating header, footer, scroll reveals. */
@@ -17,6 +18,7 @@ export default function StoreLayout({ children }: { children: React.ReactNode })
         <span className="mx-3 hidden text-brand-accent sm:inline">◆</span>
         <span className="hidden sm:inline">Secure checkout with PayPal</span>
       </p>
+      <ScrollProgress />
       <Header />
       <main id="main" className="flex-1">
         {children}

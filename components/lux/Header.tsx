@@ -31,7 +31,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 px-3 pt-3 sm:px-5">
       <div
         className={`mx-auto flex h-14 max-w-6xl items-center justify-between rounded-full pl-4 pr-2 transition-all duration-500 ease-lux ${
-          scrolled ? 'glass bg-brand-bg/60 shadow-[0_20px_50px_-30px_rgb(0_0_0/0.9)]' : 'border border-transparent'
+          scrolled ? 'glass bg-brand-bg/85 shadow-[0_20px_50px_-30px_rgb(0_0_0/0.9)]' : 'border border-transparent'
         }`}
       >
         <Logo />
