@@ -16,6 +16,11 @@ export const EVENT_NAMES = [
   'cta_click',
   'outbound_click',
   'lead_submit',
+  'begin_checkout',
+  'purchase',
+  'select_color',
+  'fm_demo_play',
+  'review_submit',
 ] as const;
 
 export type EventName = (typeof EVENT_NAMES)[number];
@@ -44,6 +49,12 @@ export const EVENT_PARAMS: Record<EventName, Record<string, ParamKind>> = {
   outbound_click: { link_id: 'slug', slot: 'enum', destination_host: 'host' },
   // The form id only. Never names, emails, phone numbers or message text.
   lead_submit: { form_id: 'slug' },
+  // Store: colorway and quantity only. Never names, emails or addresses.
+  begin_checkout: { color: 'enum', quantity: 'count' },
+  purchase: { color: 'enum', quantity: 'count' },
+  select_color: { color: 'enum', slot: 'enum' },
+  fm_demo_play: {},
+  review_submit: {},
 };
 
 export function isEventName(value: unknown): value is EventName {

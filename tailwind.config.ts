@@ -1,67 +1,61 @@
 import type { Config } from 'tailwindcss';
 
-/**
- * Design tokens.
- *
- * `brand.*` are semantic colors driven by CSS variables, so one set of section
- * components works under every preset in app/globals.css (pastel, bold,
- * clinical, natural, dark). Pick a preset with data-theme on the page wrapper.
- *
- * The named palettes (cream, mint, lavender, peach, sky, plum) are used
- * directly by the quiz-funnel archetype.
- *
- * Merging into an existing config: copy colors, fontFamily, keyframes and
- * animation into theme.extend, and keep `./data` in `content`.
- */
+/** Design tokens. `brand.*` colors come from CSS variables in app/globals.css. */
 const v = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
 
 const config: Config = {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './data/**/*.{js,ts}',
-  ],
+  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}', './data/**/*.{js,ts}'],
   theme: {
     extend: {
       colors: {
         brand: {
           bg: v('bg'),
           surface: v('surface'),
+          raised: v('raised'),
           ink: v('ink'),
           muted: v('muted'),
+          faint: v('faint'),
           line: v('line'),
           accent: v('accent'),
           'accent-ink': v('accent-ink'),
           accent2: v('accent2'),
-          band: v('band'),
-          'band-ink': v('band-ink'),
+          gold: v('gold'),
         },
-        cream: { DEFAULT: '#FFF8EE', 50: '#FFFCF7', 200: '#FBF0DF', 300: '#F1E2CB' },
-        mint: { 100: '#E9F8F1', 200: '#CFEFE0', 400: '#86D3B2', 600: '#2E8F6C', 700: '#226E53' },
-        lavender: { 100: '#F4F0FE', 200: '#E5DCFB', 400: '#B7A2F1', 600: '#7757D6', 700: '#5B3FB4' },
-        peach: { 100: '#FFF1E9', 200: '#FFDCCB', 500: '#EE8A63' },
-        sky: { 100: '#EDF5FF', 200: '#D4E7FF', 500: '#4F8FE0' },
-        plum: { DEFAULT: '#241B35', muted: '#6E6480' },
       },
       fontFamily: {
-        display: ['var(--font-display)', 'ui-rounded', 'system-ui', 'sans-serif'],
-        body: ['var(--font-body)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
+      letterSpacing: { tightest: '-0.045em' },
       keyframes: {
-        'rise-in': {
-          '0%': { opacity: '0', transform: 'translateY(12px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+        float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-14px)' } },
+        'glow-pulse': { '0%,100%': { opacity: '0.55', transform: 'scale(1)' }, '50%': { opacity: '0.85', transform: 'scale(1.06)' } },
+        marquee: { from: { transform: 'translateX(0)' }, to: { transform: 'translateX(-50%)' } },
+        aurora: {
+          '0%,100%': { transform: 'translate3d(0,0,0) rotate(0deg)' },
+          '33%': { transform: 'translate3d(4%,-3%,0) rotate(8deg)' },
+          '66%': { transform: 'translate3d(-3%,4%,0) rotate(-6deg)' },
         },
-        squish: {
-          '0%, 100%': { transform: 'scale(1, 1)' },
-          '40%': { transform: 'scale(1.18, 0.82)' },
-          '70%': { transform: 'scale(0.94, 1.06)' },
-        },
+        shine: { from: { backgroundPosition: '200% 0' }, to: { backgroundPosition: '-200% 0' } },
+        'fade-up': { from: { opacity: '0', transform: 'translateY(24px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+        'fade-in': { from: { opacity: '0' }, to: { opacity: '1' } },
+        'scale-in': { from: { opacity: '0', transform: 'scale(0.96)' }, to: { opacity: '1', transform: 'scale(1)' } },
+        spin: { to: { transform: 'rotate(360deg)' } },
       },
       animation: {
-        'rise-in': 'rise-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both',
-        squish: 'squish 1.1s ease-in-out infinite',
+        float: 'float 7s ease-in-out infinite',
+        'glow-pulse': 'glow-pulse 6s ease-in-out infinite',
+        marquee: 'marquee 38s linear infinite',
+        aurora: 'aurora 22s ease-in-out infinite',
+        shine: 'shine 5s linear infinite',
+        'fade-up': 'fade-up 0.9s cubic-bezier(0.22,1,0.36,1) both',
+        'fade-in': 'fade-in 0.6s ease-out both',
+        'scale-in': 'scale-in 0.5s cubic-bezier(0.22,1,0.36,1) both',
+        'spin-slow': 'spin 9s linear infinite',
       },
+      transitionTimingFunction: { lux: 'cubic-bezier(0.22, 1, 0.36, 1)' },
     },
   },
   plugins: [],

@@ -1,18 +1,16 @@
 import Link from 'next/link';
-import { site } from '@/data/site';
-import SiteHeader from '@/components/sections/SiteHeader';
-import PagesLayout from '@/app/(pages)/layout';
+import StoreLayout from '@/app/(pages)/layout';
 
 export default function NotFound() {
   return (
-    <PagesLayout>
-      <SiteHeader brand={site.brand} badge={site.badge} />
-      <section className="px-4 py-24 text-center">
-        <h1 className="font-display text-4xl font-bold text-brand-ink">Page not found</h1>
-        <Link href="/" className="mt-6 inline-block font-semibold text-brand-accent">
+    <StoreLayout>
+      <section className="px-5 py-32 text-center">
+        <p className="eyebrow">404</p>
+        <h1 className="mt-4 font-display text-5xl font-semibold tracking-tightest text-brand-ink">This page is off-key.</h1>
+        <Link href="/" className="btn-ghost mt-10">
           Back to the FM-1
         </Link>
       </section>
-    </PagesLayout>
+    </StoreLayout>
   );
 }

@@ -55,40 +55,26 @@ export default function ConsentBanner() {
       role="dialog"
       aria-modal="false"
       aria-labelledby="consent-title"
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-cream-300 bg-white p-4 shadow-lg sm:p-5"
+      className="glass fixed inset-x-3 bottom-3 z-[65] animate-fade-up rounded-3xl bg-brand-surface/80 p-5 shadow-2xl sm:inset-x-auto sm:left-5 sm:bottom-5 sm:max-w-md"
     >
-      <div className="mx-auto flex max-w-5xl flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="max-w-2xl">
-          <h2 id="consent-title" className="text-sm font-semibold text-plum">
-            Measurement is off unless you turn it on
-          </h2>
-          <p className="mt-1.5 text-sm leading-relaxed text-plum-muted">
-            We would like to use Google Analytics and Google Ads measurement to see which pages are
-            useful. It sets cookies and shares your IP address and page views with Google. Nothing
-            is measured until you choose, and declining costs you nothing on this site. Details are
-            on the{' '}
-            <Link href="/privacy" className="underline underline-offset-4 hover:text-plum">
-              privacy page
-            </Link>
-            .
-          </p>
-        </div>
-        <div className="flex shrink-0 gap-2">
-          <button
-            type="button"
-            onClick={() => choose(false)}
-            className="rounded-full border border-plum px-5 py-2.5 text-sm font-semibold text-plum hover:bg-cream-200"
-          >
-            Decline
-          </button>
-          <button
-            type="button"
-            onClick={() => choose(true)}
-            className="rounded-full bg-plum px-5 py-2.5 text-sm font-semibold text-white hover:bg-plum/90"
-          >
-            Allow
-          </button>
-        </div>
+      <h2 id="consent-title" className="font-display text-[15px] font-semibold text-brand-ink">
+        Measurement is off unless you turn it on
+      </h2>
+      <p className="mt-1.5 text-[13px] leading-relaxed text-brand-muted">
+        We&rsquo;d like to use Google Analytics and Vercel Analytics to see which pages are useful. Google sets cookies and
+        receives your IP address and page views. Nothing is measured until you choose. Details are on the{' '}
+        <Link href="/privacy" className="text-brand-ink underline underline-offset-4">
+          privacy page
+        </Link>
+        .
+      </p>
+      <div className="mt-4 flex gap-2">
+        <button type="button" onClick={() => choose(false)} className="btn-ghost flex-1 !py-2.5 text-sm">
+          Decline
+        </button>
+        <button type="button" onClick={() => choose(true)} className="btn-primary flex-1 !py-2.5 text-sm">
+          Allow
+        </button>
       </div>
     </div>
   );
