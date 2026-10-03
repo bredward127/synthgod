@@ -3,6 +3,7 @@
 A one-product store for the M-VAVE FM-1 handheld FM synthesizer. Next.js 14 (App Router), Tailwind and PayPal checkout.
 
 - **Home `/`:** animated hero with a colorway switcher, a feature grid, a playable FM synth in the browser (Web Audio), a color studio, a spec sheet, reviews, guarantees, FAQ and a sticky buy bar.
+- **Virtual FM-1 `/play`** (also embedded on the home page): a playable browser simulation of the panel. All 8 knobs, 12 buttons, octave buttons and the 27-key keybed work. The simulated screen has pages for home (live scope), operators, envelopes, LFO, the six effects, global, arpeggiator, 16-step sequencer and save. Under it is a 6-operator Web Audio FM engine (`lib/fm1/`) with 8 algorithms and 26 demo patches (`lib/fm1/patches.ts`). The patches are our own sounds, not M-VAVE's factory presets, and the page says so. Saved patches live in the visitor's browser. Full-screen mode rotates to landscape on phones.
 - **Checkout `/checkout`:** choose color and quantity, then pay with PayPal Smart Buttons (PayPal balance or card). Orders are created and captured **on the server**, and the price always comes from `data/store.ts`, so a buyer can't change it.
 - **Pages:** `/checkout/success`, `/shipping`, `/returns`, `/terms`, `/privacy`, `/contact`, a sitemap and robots.txt.
 - **Analytics:** Vercel Web Analytics counts every visit (cookieless, URLs scrubbed to path + UTM tags). Google Analytics is optional and stays off until the visitor clicks Allow; the banner only appears when `NEXT_PUBLIC_GOOGLE_TAG_ID` is set.

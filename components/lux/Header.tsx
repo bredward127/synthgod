@@ -8,7 +8,7 @@ import { formatMoney, store } from '@/data/store';
 
 const NAV = [
   { label: 'Features', href: '/#features' },
-  { label: 'Sound', href: '/#sound' },
+  { label: 'Play', href: '/play' },
   { label: 'Colors', href: '/#colors' },
   { label: 'Reviews', href: '/#reviews' },
   { label: 'FAQ', href: '/#faq' },

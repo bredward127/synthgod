@@ -4,7 +4,8 @@ import Marquee from '@/components/lux/Marquee';
 import Bento from '@/components/lux/Bento';
 import Tour from '@/components/lux/Tour';
 import SectionTitle from '@/components/lux/SectionTitle';
-import FmPlayground from '@/components/lux/FmPlayground';
+import LazyFm1 from '@/components/fm1/LazyFm1';
+import Link from 'next/link';
 import ColorStudio from '@/components/lux/ColorStudio';
 import Specs from '@/components/lux/Specs';
 import Reviews from '@/components/lux/Reviews';
@@ -85,17 +86,24 @@ export default function Home() {
 
       <Bento />
 
-      <section id="sound" className="scroll-mt-24 px-5 py-20 sm:py-28">
+      <section id="sound" className="scroll-mt-24 px-4 py-20 sm:px-5 sm:py-28">
         <div className="mx-auto max-w-6xl">
           <SectionTitle
-            eyebrow="Hear it"
-            title="FM, explained by"
-            accent="your ears."
-            body="Frequency modulation bends one wave with another. Change the ratio and the depth and a sine turns into an electric piano, a bell or a bass. Try it."
+            eyebrow="Play it"
+            title="The whole panel,"
+            accent="in your browser."
+            body="Turn the knobs, flip through the screen pages, run the arpeggiator. Our virtual FM-1 has a 6-operator engine, six effects and 26 demo patches."
           />
-          <Reveal delay={120} className="mt-14">
-            <FmPlayground />
+          <Reveal delay={120} className="mt-10 sm:mt-14">
+            <LazyFm1 />
           </Reveal>
+          <p className="mx-auto mt-5 max-w-2xl text-center text-xs leading-relaxed text-brand-faint">
+            A simulation we built, not M-VAVE&rsquo;s firmware or factory presets.{' '}
+            <Link href="/play" className="text-brand-ink underline underline-offset-4">
+              Open the full instrument and controls guide
+            </Link>
+            .
+          </p>
         </div>
       </section>
 

@@ -119,7 +119,7 @@ export default function Hero() {
           </Magnetic>
           <a href="#sound" className="btn-ghost w-full sm:w-auto" onClick={() => track('cta_click', { cta_id: 'hero-hear' })}>
             <AudioLines className="h-4 w-4 text-brand-accent2" />
-            Hear FM in your browser
+            Play it in your browser
           </a>
         </div>
 

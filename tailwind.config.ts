@@ -27,6 +27,7 @@ const config: Config = {
         body: ['var(--font-body)', 'system-ui', 'sans-serif'],
         serif: ['var(--font-serif)', 'Georgia', 'serif'],
         mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+        pixel: ['var(--font-pixel)', 'ui-monospace', 'monospace'],
       },
       letterSpacing: { tightest: '-0.045em' },
       keyframes: {
