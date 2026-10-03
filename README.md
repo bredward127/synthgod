@@ -11,7 +11,7 @@ A one-product store for the M-VAVE FM-1 handheld FM synthesizer. Next.js 14 (App
 
 1. **`data/store.ts`:** set the price, shipping cost and times, return window and colors (`available: false` marks a color sold out). Every policy page reads from here.
 2. **Policies:** read `/shipping`, `/returns` and `/terms` and change anything you won't honor exactly as written.
-3. **`data/reviews.ts`:** add real customer reviews only (with permission). Update or remove `listingRating`.
+3. **`data/reviews.ts`:** holds 9 real reviews from the AliExpress listing (`source: 'aliexpress'`, shown labeled "Reviewed on AliExpress"). Add your own customers' reviews as `source: 'store'`: they show first, with their own average. Update `listingRating` from the live listing.
 4. **Photos:** `public/images/fm1-*.webp` are cutouts of the product photos you supplied. Make sure you have the right to use them. Purple has no photo yet: add `public/images/fm1-purple.webp` and set `image` on the purple color.
 
 ## PayPal setup
